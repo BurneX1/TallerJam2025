@@ -1,0 +1,122 @@
+{
+    "name": "PlayerInputs",
+    "maps": [
+        {
+            "name": "Runes",
+            "id": "55cf8624-e5a1-4f0e-a234-b5e902d31757",
+            "actions": [
+                {
+                    "name": "Rune1",
+                    "type": "Button",
+                    "id": "f7d61426-ef5d-4c60-8e79-307e0e387878",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rune2",
+                    "type": "Button",
+                    "id": "462eb616-f109-4706-85b8-c92e95380468",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rune3",
+                    "type": "Button",
+                    "id": "454d5186-c310-454c-a177-3320990be6ce",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LaunchRunes",
+                    "type": "Button",
+                    "id": "20953ca9-1e87-43e3-8fdf-3349770ffbb7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ade05e19-44f0-4978-8556-114cb583f490",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rune1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e9cd21c-aa44-4983-ac9d-bac1e2d6823e",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LaunchRunes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "996b1272-f4da-49cc-85ae-a2cf7bf5c2e1",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rune2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "408ba361-d003-4431-a13a-24dafe93af88",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rune3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "GameInputs",
+            "id": "d1164326-ad28-41c5-88e1-9e2bc93c9cba",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "95e88926-5e6a-427e-91d9-e8d25b124055",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9aa0add1-205f-49d5-aafb-71da8e8532c0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
