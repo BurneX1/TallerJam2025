@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Rune2
   m_EditorClassIdentifier: 
   runeType: 1
+  damageValue: 15
   runeValue: 1

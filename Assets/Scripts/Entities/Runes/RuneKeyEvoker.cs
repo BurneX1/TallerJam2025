@@ -16,7 +16,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
     public delegate void RuneSequenceSubmitted(List<RuneType> runeSequence);
     public event RuneSequenceSubmitted OnRuneSequenceSubmitted;
 
-    private void Awake()
+     void Awake()
     {
         playerInputs = new PlayerInputs();
 
