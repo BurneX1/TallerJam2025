@@ -69,6 +69,8 @@ public class Life : MonoBehaviour
                 Dead.Invoke();
             }      
         };
+
+        HealthUpdate += (int amount) => Debug.Log(gameObject.name + amount + " life: " + currentHealth);
     }
 
     public void OnDisable()
@@ -81,5 +83,7 @@ public class Life : MonoBehaviour
                 Dead.Invoke();
             }
         };
+
+        HealthUpdate -= (int amount) => Debug.Log(gameObject.name + amount + " life: " + currentHealth);
     }
 }

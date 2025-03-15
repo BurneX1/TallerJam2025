@@ -23,6 +23,8 @@ public class HealthAction : MonoBehaviour
             {
                 if (AttachablkeEvents[i].invoked==false && life.GetHealthPercentage() <= AttachablkeEvents[i].healthPercentage)
                 {
+                    if (AttachablkeEvents[i].ignoreDeath==false&&life.currentHealth<=0) continue;
+
                     AttachablkeEvents[i].EvokeAction.Invoke();
                     AttachablkeEvents[i].invoked = true;
                 }
@@ -54,5 +56,6 @@ public class HealthEvent
     [Range(0f, 100f)]
     public float healthPercentage;
     public UnityEvent EvokeAction;
+    public bool ignoreDeath;
     public bool invoked;
 }
