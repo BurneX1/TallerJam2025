@@ -6,10 +6,20 @@ public class EnemieSpawner : MonoBehaviour
 {
 
     public SpawnPoolManager poolManager;
+    public float delaySpawn;
+    public string[] avaibleEnemies;
+
+    public Dictionary<Vector2,GameObject> currentEnemies = new Dictionary<Vector2,GameObject>();
+
+    public SpawnSlot[] pointSlots;
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < pointSlots.Length; i++)
+        {
+            StartCoroutine(RegisterObjectToPoint(i, false));
+        }
+
     }
 
     // Update is called once per frame
@@ -17,4 +27,64 @@ public class EnemieSpawner : MonoBehaviour
     {
         
     }
+
+    public IEnumerator RegisterObjectToPoint(int slotValue, bool delay)
+    {
+        if(delay)yield return new WaitForSeconds(delaySpawn);
+
+        if (slotValue >= pointSlots.Length) yield return 0;
+        SpawnSlot slot = pointSlots[slotValue];
+
+        if(slot.spawnPoint==null || slot.objSlot != null)
+        {
+            yield return 0;
+        }
+
+        GameObject instancedObject = poolManager.Generate(poolManager.GetObjectListValue(avaibleEnemies[Random.Range(0, avaibleEnemies.Length)]), slot.spawnPoint.transform.position,slot.spawnPoint);
+        slot.objSlot = instancedObject;
+        InstantiatedElement element = instancedObject.GetComponent<InstantiatedElement>();
+
+        currentEnemies.Add(
+            new Vector2
+            (element.listNumID,
+            slotValue)
+            , instancedObject
+            );
+
+        element.EnableCall += (bool enable, int id) => 
+        {
+            if (enable == false) UnRegisterObject(slotValue,id);
+        };
+        //Insertar función para agregar elementos al combat Manager
+
+    }
+
+    public void UnRegisterObject(int slotValue, int objectID)
+    {
+        if (slotValue >= pointSlots.Length) return;
+        SpawnSlot slot = pointSlots[slotValue];
+
+        currentEnemies.Remove(new Vector2(objectID, slotValue));
+
+        InstantiatedElement element = slot.objSlot.GetComponent<InstantiatedElement>();
+
+        slot.objSlot = null;
+
+        
+        element.EnableCall -= (bool enable, int id) =>
+        {
+            if (enable == false) UnRegisterObject(slotValue, id);
+        };
+        //Insertar función para quitar elementos al combat Manager
+
+        StartCoroutine(RegisterObjectToPoint(slotValue, true));
+    }
+
+
+}
+[System.Serializable]
+public class SpawnSlot
+{
+    public GameObject objSlot;
+    public Transform spawnPoint;
 }

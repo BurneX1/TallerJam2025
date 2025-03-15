@@ -42,6 +42,7 @@ public class HealthAction : MonoBehaviour
 
     private void OnEnable()
     {
+        RebuildActions();
         if (life != null) life.HealthUpdate += (int value) => CheckActions();
     }
 

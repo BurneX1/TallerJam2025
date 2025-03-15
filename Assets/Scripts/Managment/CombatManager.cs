@@ -5,7 +5,10 @@ using System.Linq;
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager instance;
     [Header("Configuración de Combate")]
+    public GameObject player;
+    [Space(2.5f)]
     [SerializeField] private List<GameObject> enemies = new();
     [SerializeField] private float delayBetweenRunes = 0.5f;
 
@@ -15,6 +18,7 @@ public class CombatManager : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         // Obtener la instancia de RuneKeyEvoker
         runeKeyEvoker = FindObjectOfType<RuneKeyEvoker>();
         // Suscribirse al evento de secuencia de runas de RuneKeyEvoker
