@@ -15,16 +15,11 @@ public class EnemieSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CombatManager.instance.ClearEnemies();
         for (int i = 0; i < pointSlots.Length; i++)
         {
             StartCoroutine(RegisterObjectToPoint(i, false));
         }
-        StartCoroutine(RegisterObjectToPoint(1, false));
-        StartCoroutine(RegisterObjectToPoint(1, false));
-        StartCoroutine(RegisterObjectToPoint(1, false));
-        StartCoroutine(RegisterObjectToPoint(1, false));
-        StartCoroutine(RegisterObjectToPoint(1, false));
-        StartCoroutine(RegisterObjectToPoint(1, false));
     }
 
     // Update is called once per frame

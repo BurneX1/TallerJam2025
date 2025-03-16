@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8158708517330243410, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: -7552582706839291426, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -495,10 +499,34 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6927156343110040619, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 996224536071554785, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 2904994163798663115, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2904994163798663115, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 5839220372168926314, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 7265889737440742931, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 8132154255974226403, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -533,6 +561,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 50655484821847268}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4853329029792491270}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
 --- !u!1 &4906234806663975204 stripped
 GameObject:
@@ -571,7 +602,7 @@ MonoBehaviour:
     EvokeAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 4906234806663975204}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -603,14 +634,14 @@ MonoBehaviour:
   TimeOverEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Life, Assembly-CSharp
-        m_MethodName: LooseHealth
+      - m_Target: {fileID: 50655484821847268}
+        m_TargetAssemblyTypeName: EnemyController, Assembly-CSharp
+        m_MethodName: PlayerRemoteDamage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 15
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -675,10 +706,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: {fileID: 0}
+  shield: {fileID: 0}
   incomeRuneChecker: {fileID: 0}
-  avaiableRunes: []
+  avaiableRunes:
+  - {fileID: 11400000, guid: e6338c9a3bbf5a34a87f58755fb91451, type: 2}
+  - {fileID: 11400000, guid: 3ef9c71b105bab34d95d768fde4df471, type: 2}
+  - {fileID: 11400000, guid: f79ef44e360d5584fa945147aea3e1b3, type: 2}
   startShields: 0
   runesNumber: 1
+--- !u!114 &4853329029792491270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906234806663975204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b598f4b6499ce6e4ab2cab7aa952ad0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 2591300971840453712}
+  speedRefresh: 10
+  reverseFill: 0
+  targetImage: {fileID: 2758235314824547385}
 --- !u!4 &6115443383261874503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}

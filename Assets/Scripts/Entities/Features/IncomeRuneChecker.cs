@@ -136,14 +136,9 @@ public class IncomeRuneChecker : MonoBehaviour
     /// en caso se quieran añadir vulnerabilidades de forma dinámica
     /// </summary>
     /// <param name="runeType"></param>
-    private void AddVulnerabilityByType(RuneType runeType)
+    public void AddVulnerabilityByType(RuneData rune)
     {
-        if (!IsVulnerableTo(runeType))
-        {
-            RuneData newVulnerability = new();
-            newVulnerability.SetupRune(runeType);
-            vulnerableRunes.Add(newVulnerability);
-        }
+        vulnerableRunes.Add(rune);
     }
 
 }

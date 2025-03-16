@@ -528,6 +528,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -422521002810652931, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 996224536071554785, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 2904994163798663115, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 8132154255974226403, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -559,6 +575,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4954972594460940443}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2160280671587745730}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
 --- !u!4 &5465589441715304628 stripped
 Transform:
@@ -602,7 +621,7 @@ MonoBehaviour:
     EvokeAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 6562225656860221655}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -706,7 +725,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: {fileID: 0}
+  shield: {fileID: 0}
   incomeRuneChecker: {fileID: 0}
-  avaiableRunes: []
-  startShields: 1
+  avaiableRunes:
+  - {fileID: 11400000, guid: e6338c9a3bbf5a34a87f58755fb91451, type: 2}
+  - {fileID: 11400000, guid: 3ef9c71b105bab34d95d768fde4df471, type: 2}
+  - {fileID: 11400000, guid: f79ef44e360d5584fa945147aea3e1b3, type: 2}
+  startShields: 0
   runesNumber: 2
+--- !u!114 &2160280671587745730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562225656860221655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b598f4b6499ce6e4ab2cab7aa952ad0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 2436825013401140692}
+  speedRefresh: 10
+  reverseFill: 0
+  targetImage: {fileID: 7797615798948765067}

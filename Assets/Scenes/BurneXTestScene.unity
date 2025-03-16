@@ -1103,7 +1103,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    ignoreDeath: 0
+    ignoreDeath: 1
     invoked: 0
 --- !u!114 &849099363
 MonoBehaviour:
@@ -1200,6 +1200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRuneCount: 2
   maxRuneCount: 6
+  cooldownPerRune: 0.5
+  showCooldownDebug: 1
 --- !u!114 &849099367
 MonoBehaviour:
   m_ObjectHideFlags: 0

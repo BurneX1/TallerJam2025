@@ -87,9 +87,11 @@ public class CombatManager : MonoBehaviour
     private IEnumerator ProcessSingleRune(RuneType runeType)
     {
         Debug.Log($"Procesando runa: {runeType}");
-        
+
+        List<GameObject> enemiesObj = enemies.ToList<GameObject>();
+
         // Recorrer cada enemigo y comprobar si la runa les afecta
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in enemiesObj)
         {
             if (enemy == null) continue;
 
@@ -132,6 +134,11 @@ public class CombatManager : MonoBehaviour
         {
             enemies.Remove(enemy);
         }
+    }
+
+    public void ClearEnemies()
+    {
+        if(enemies!=null)enemies.Clear();
     }
 
     /// <summary>
