@@ -9,6 +9,7 @@ public class RuneData : ScriptableObject
     [SerializeField] private RuneType runeType;
     [SerializeField] private int damageValue = 10; // Valor predeterminado
     [SerializeField] private int runeValue;
+    [SerializeField] private Color runeColor;
 
     public RuneType RuneType => runeType;
     public int RuneValue => runeValue;
