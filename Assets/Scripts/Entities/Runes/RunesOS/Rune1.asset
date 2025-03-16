@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Rune1
   m_EditorClassIdentifier: 
   runeType: 0
+  damageValue: 10
   runeValue: 0
-  runeSprite: {fileID: 0}
+  runeColor: {r: 1, g: 0, b: 0, a: 1}
