@@ -19,7 +19,12 @@ public class EnemieSpawner : MonoBehaviour
         {
             StartCoroutine(RegisterObjectToPoint(i, false));
         }
-
+        StartCoroutine(RegisterObjectToPoint(1, false));
+        StartCoroutine(RegisterObjectToPoint(1, false));
+        StartCoroutine(RegisterObjectToPoint(1, false));
+        StartCoroutine(RegisterObjectToPoint(1, false));
+        StartCoroutine(RegisterObjectToPoint(1, false));
+        StartCoroutine(RegisterObjectToPoint(1, false));
     }
 
     // Update is called once per frame
@@ -32,14 +37,15 @@ public class EnemieSpawner : MonoBehaviour
     {
         if(delay)yield return new WaitForSeconds(delaySpawn);
 
-        if (slotValue >= pointSlots.Length) yield return 0;
+        if (slotValue >= pointSlots.Length) yield break;
         SpawnSlot slot = pointSlots[slotValue];
 
-        if(slot.spawnPoint==null || slot.objSlot != null)
+        if(slot.spawnPoint==null || pointSlots[slotValue].objSlot != null)
         {
-            yield return 0;
+            yield break;
+           
         }
-
+        
         GameObject instancedObject = poolManager.Generate(poolManager.GetObjectListValue(avaibleEnemies[Random.Range(0, avaibleEnemies.Length)]), slot.spawnPoint.transform.position,slot.spawnPoint);
         slot.objSlot = instancedObject;
         InstantiatedElement element = instancedObject.GetComponent<InstantiatedElement>();
@@ -55,6 +61,8 @@ public class EnemieSpawner : MonoBehaviour
         {
             if (enable == false) UnRegisterObject(slotValue,id);
         };
+
+        if (CombatManager.instance) CombatManager.instance.AddEnemy(instancedObject);
         //Insertar función para agregar elementos al combat Manager
 
     }
@@ -68,6 +76,9 @@ public class EnemieSpawner : MonoBehaviour
 
         InstantiatedElement element = slot.objSlot.GetComponent<InstantiatedElement>();
 
+        //Insertar función para quitar elementos al combat Manager
+        if (CombatManager.instance) CombatManager.instance.RemoveEnemy(slot.objSlot);
+
         slot.objSlot = null;
 
         
@@ -75,7 +86,9 @@ public class EnemieSpawner : MonoBehaviour
         {
             if (enable == false) UnRegisterObject(slotValue, id);
         };
-        //Insertar función para quitar elementos al combat Manager
+
+        
+        
 
         StartCoroutine(RegisterObjectToPoint(slotValue, true));
     }
