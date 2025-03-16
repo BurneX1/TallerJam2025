@@ -1,13 +1,16 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class IncomeRuneChecker : MonoBehaviour
 {
     [Header("Configuración de Vulnerabilidad")]
-    [SerializeField] private List<RuneData> vulnerableRunes = new();
+    public List<RuneData> vulnerableRunes = new();
     [SerializeField] private Life enemyLife;
     [SerializeField] private int defaultDamage = 10; // Daño por defecto si la runa no tiene valor de daño
+
+    // Evento que se dispara cuando una runa hace daño exitosamente
+    public event Action<RuneType, int> OnRuneDamage; // Tipo de runa y daño aplicado
 
     private Shield shield;
 
@@ -59,8 +62,14 @@ public class IncomeRuneChecker : MonoBehaviour
         {
             if (shield == null || shield.CanTakeDamage()) // Solo daña si no hay escudo o el escudo permite daño
             {
-                ApplyRuneDamage(runeType);
+                int damageApplied = ApplyRuneDamage(runeType);
                 Debug.Log($"Enemigo {gameObject.name} recibió daño de la runa {runeType}");
+
+                // Invocar el evento con el tipo de runa y el daño aplicado
+                OnRuneDamage?.Invoke(runeType, damageApplied);
+
+                // Eliminar la vulnerabilidad a esta runa después de aplicar el daño
+                RemoveVulnerabilityByType(runeType);
             }
             else
             {
@@ -76,7 +85,12 @@ public class IncomeRuneChecker : MonoBehaviour
         return true;
     }
 
-    private void ApplyRuneDamage(RuneType runeType)
+    /// <summary>
+    /// Aplica el daño de una runa específica al enemigo
+    /// </summary>
+    /// <param name="runeType">El tipo de runa a procesar</param>
+    /// <returns>La cantidad de daño aplicado</returns>
+    private int ApplyRuneDamage(RuneType runeType)
     {
         if (enemyLife != null)
         {
@@ -95,24 +109,41 @@ public class IncomeRuneChecker : MonoBehaviour
 
             enemyLife.LooseHealth(damageToApply);
             Debug.Log($"Aplicando {damageToApply} de daño al enemigo {gameObject.name} con la runa {runeType}");
+            return damageToApply;
+        }
+        return 0;
+    }
+
+    /// <summary>
+    /// Elimina la vulnerabilidad a un tipo específico de runa del enemigo cuando se aplica el daño
+    /// </summary>
+    /// <param name="runeType">El tipo de runa a eliminar</param>
+    private void RemoveVulnerabilityByType(RuneType runeType)
+    {
+        for (int i = vulnerableRunes.Count - 1; i >= 0; i--)
+        {
+            if (vulnerableRunes[i].RuneType == runeType)
+            {
+                Debug.Log($"Eliminando vulnerabilidad a la runa {runeType} del enemigo {gameObject.name}");
+                vulnerableRunes.RemoveAt(i);
+                break; // Eliminamos solo la primera ocurrencia
+            }
         }
     }
 
-    // Método para añadir una nueva vulnerabilidad
-    public void AddVulnerability(RuneData runeData)
+    /// <summary>
+    /// Añade una vulnerabilidad a un tipo específico de runa al enemigo,
+    /// en caso se quieran añadir vulnerabilidades de forma dinámica
+    /// </summary>
+    /// <param name="runeType"></param>
+    private void AddVulnerabilityByType(RuneType runeType)
     {
-        if (!vulnerableRunes.Contains(runeData))
+        if (!IsVulnerableTo(runeType))
         {
-            vulnerableRunes.Add(runeData);
+            RuneData newVulnerability = new();
+            newVulnerability.SetupRune(runeType);
+            vulnerableRunes.Add(newVulnerability);
         }
     }
 
-    // Método para eliminar una vulnerabilidad
-    public void RemoveVulnerability(RuneData runeData)
-    {
-        if (vulnerableRunes.Contains(runeData))
-        {
-            vulnerableRunes.Remove(runeData);
-        }
-    }
 }
