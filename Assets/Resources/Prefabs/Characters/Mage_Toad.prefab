@@ -470,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
       propertyPath: m_LocalScale.x
@@ -581,6 +581,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5916289034999318696}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1790097572035964180}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}
 --- !u!4 &110340141679840685 stripped
 Transform:
@@ -609,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f8c77e9510ada41885bc55dc6f33bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 2
   currentHealth: 0
 --- !u!114 &6250725802779603436
 MonoBehaviour:
@@ -739,7 +742,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6338c9a3bbf5a34a87f58755fb91451, type: 2}
   - {fileID: 11400000, guid: 3ef9c71b105bab34d95d768fde4df471, type: 2}
   - {fileID: 11400000, guid: f79ef44e360d5584fa945147aea3e1b3, type: 2}
-  startShields: 0
+  startShields: 1
   runesNumber: 2
 --- !u!114 &2160280671587745730
 MonoBehaviour:
@@ -778,6 +781,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1790097572035964180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562225656860221655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132ac34a8a4ec8447af87c8159d30610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checker: {fileID: 0}
+  runeColors:
+  - rune: {fileID: 0}
+    lights:
+    - {fileID: 2528223752818165870}
+    - {fileID: 8708028078986877911}
+  - rune: {fileID: 0}
+    lights:
+    - {fileID: 3340841836708826882}
 --- !u!4 &7676442930365295320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5296709779585078350, guid: 5c99312348e14cc45a785ef4aa069480, type: 3}

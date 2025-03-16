@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8158708517330243410, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -587,6 +587,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6448215726810830955}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 445659371006671079}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
 --- !u!1 &4906234806663975204 stripped
 GameObject:
@@ -605,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f8c77e9510ada41885bc55dc6f33bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 2
   currentHealth: 0
 --- !u!114 &1228991683280549315
 MonoBehaviour:
@@ -774,6 +777,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &445659371006671079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906234806663975204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132ac34a8a4ec8447af87c8159d30610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checker: {fileID: 0}
+  runeColors:
+  - rune: {fileID: 0}
+    lights:
+    - {fileID: 2200970035405638385}
+  - rune: {fileID: 0}
+    lights:
+    - {fileID: 3302617079459538139}
 --- !u!4 &6115443383261874503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}

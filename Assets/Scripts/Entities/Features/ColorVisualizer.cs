@@ -17,8 +17,9 @@ public class ColorVisualizer : MonoBehaviour
     void Start()
     {
         if(GetComponent<IncomeRuneChecker>()) checker = GetComponent<IncomeRuneChecker>();
-        //SetColors();
+        SetColors();
     }
+
 
     // Update is called once per frame
     void Update()
