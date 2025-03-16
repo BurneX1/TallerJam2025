@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RuneData", menuName = "Runes/RuneData", order = 1)]
@@ -11,9 +10,10 @@ public class RuneData : ScriptableObject
     [SerializeField] private int runeValue;
     [SerializeField] private Color runeColor;
 
-    public RuneType RuneType => runeType;
-    public int RuneValue => runeValue;
+    public RuneType RuneType => runeType; // Propiedad pública para acceder al tipo de runa
+    public int RuneValue => runeValue; // Propiedad pública para acceder al valor de la runa
     public int DamageValue => damageValue; // Propiedad pública para acceder al valor de daño
+    public Color RuneColor => runeColor; // Propiedad pública para acceder al color de la runa
 
     public void SetupRune(RuneType type)
     {
