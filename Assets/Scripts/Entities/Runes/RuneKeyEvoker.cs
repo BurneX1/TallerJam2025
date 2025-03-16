@@ -6,28 +6,45 @@ using static PlayerInputs;
 
 public class RuneKeyEvoker : MonoBehaviour, IRunesActions
 {
-    [Header("Rune Configuration")]
+    [Header("Configuración de Runas")]
     [SerializeField] private int minRuneCount = 2;
     [SerializeField] private int maxRuneCount = 6;
     [SerializeField] float cooldownPerRune = 0.5f;
 
-    [Header("Cooldown Feedback")]
+    [Header("Información de Enfriamiento")]
     [SerializeField] private bool showCooldownDebug = true;
 
     private PlayerInputs playerInputs;
     private readonly List<RuneType> currentRuneSequence = new();
 
-    // Cooldown system variables
+    // Variables del sistema de enfriamiento
     private bool isOnCooldown = false;
     private float cooldownTimeRemaining = 0f;
+
+    // Método público para obtener el estado actual del cooldown
+    public bool IsOnCooldown => isOnCooldown;
+
+    // Método público para obtener el tiempo restante de cooldown
+    public float CooldownTimeRemaining => cooldownTimeRemaining;
+
+    // Método público para obtener el tiempo total de cooldown
+    public float CooldownTotalTime { get; private set; }
 
     // Evento que se dispara cuando se envía una secuencia de runas
     public delegate void RuneSequenceSubmitted(List<RuneType> runeSequence);
     public event RuneSequenceSubmitted OnRuneSequenceSubmitted;
 
-    // Event for cooldown started/ended
+    // Evento para cuando el enfriamiento comienza/termina
     public delegate void RuneCooldownChanged(bool isActive, float duration);
     public event RuneCooldownChanged OnRuneCooldownChanged;
+
+    // Evento para cuando se añade una runa a la secuencia
+    public delegate void RuneAdded(RuneType runeType);
+    public event RuneAdded OnRuneAdded;
+
+    // Evento para cuando se limpia la secuencia de runas
+    public delegate void RunesCleared();
+    public event RunesCleared OnRunesCleared;
 
     void Awake()
     {
@@ -50,7 +67,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
 
     private void Update()
     {
-        // Update cooldown timer if active
+        // Actualizar el temporizador de enfriamiento si está activo
         if (isOnCooldown)
         {
             cooldownTimeRemaining -= Time.deltaTime;
@@ -61,8 +78,8 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
             }
             else if (showCooldownDebug && Mathf.FloorToInt(cooldownTimeRemaining * 10) % 5 == 0)
             {
-                // Only log every 0.5 seconds to avoid console spam
-                Debug.Log($"Cooldown remaining: {cooldownTimeRemaining:F1} seconds");
+                // Solo registrar cada 0.5 segundos para evitar spam en la consola
+                Debug.Log($"Tiempo de enfriamiento restante: {cooldownTimeRemaining:F1} segundos");
             }
         }
     }
@@ -101,7 +118,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
         }
         else if (context.performed && isOnCooldown)
         {
-            Debug.LogWarning($"Cannot submit runes - on cooldown for {cooldownTimeRemaining:F1} more seconds");
+            Debug.LogWarning($"No se pueden enviar runas - en enfriamiento por {cooldownTimeRemaining:F1} segundos más");
         }
     }
     #endregion
@@ -111,7 +128,10 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
         // Añade la runa a la secuencia actual
         currentRuneSequence.Add(runeType);
         // Log de la runa añadida y la cantidad de runas en la secuencia actual
-        Debug.Log($"Rune added: {runeType}. Current sequence count: {currentRuneSequence.Count}");
+        Debug.Log($"Runa añadida: {runeType}. Cantidad en secuencia actual: {currentRuneSequence.Count}");
+
+        // Disparar el evento OnRuneAdded
+        OnRuneAdded?.Invoke(runeType);
     }
 
     private void SubmitRuneSequence()
@@ -119,7 +139,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
         if (currentRuneSequence.Count >= minRuneCount)
         {
             // Log de la cantidad de runas en la secuencia actual
-            Debug.Log($"Submitting rune sequence with {currentRuneSequence.Count} runes");
+            Debug.Log($"Enviando secuencia de runas con {currentRuneSequence.Count} runas");
 
             List<RuneType> submittedSequence = new(currentRuneSequence);
             OnRuneSequenceSubmitted?.Invoke(submittedSequence);
@@ -132,7 +152,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
         }
         else
         {
-            Debug.LogWarning($"Not enough runes to submit. Need at least {minRuneCount}, have {currentRuneSequence.Count}");
+            Debug.LogWarning($"No hay suficientes runas para enviar. Se necesitan al menos {minRuneCount}, se tienen {currentRuneSequence.Count}");
         }
     }
 
@@ -155,7 +175,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
         isOnCooldown = true;
         cooldownTimeRemaining = duration;
 
-        Debug.Log($"Starting cooldown for {duration:F1} seconds");
+        Debug.Log($"Iniciando enfriamiento por {duration:F1} segundos");
 
         // Notifica el inicio del enfriamiento
         OnRuneCooldownChanged?.Invoke(true, duration);
@@ -169,7 +189,7 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
         isOnCooldown = false;
         cooldownTimeRemaining = 0f;
 
-        Debug.Log("Cooldown ended - ready for new rune sequence");
+        Debug.Log("Enfriamiento terminado - listo para nueva secuencia de runas");
 
         // Notifica el fin del enfriamiento
         OnRuneCooldownChanged?.Invoke(false, 0f);
@@ -178,10 +198,13 @@ public class RuneKeyEvoker : MonoBehaviour, IRunesActions
     private void ClearRuneSequence()
     {
         currentRuneSequence.Clear();
-        Debug.Log("Rune sequence cleared");
+        Debug.Log("Secuencia de runas limpiada");
+
+        // Disparar el evento OnRunesCleared
+        OnRunesCleared?.Invoke();
     }
 
-    // Metodo publico para obtener la secuencia de runas actual en caso sea necesario
+    // Método público para obtener la secuencia de runas actual en caso sea necesario
     public IReadOnlyList<RuneType> GetCurrentRuneSequence()
     {
         return currentRuneSequence.AsReadOnly();
