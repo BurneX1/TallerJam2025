@@ -275,6 +275,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3531006595897480070}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 50655484821847268}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
 --- !u!1 &4906234806663975204 stripped
 GameObject:
@@ -404,6 +407,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6338c9a3bbf5a34a87f58755fb91451, type: 2}
   enemyLife: {fileID: 0}
   defaultDamage: 10
+--- !u!114 &50655484821847268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906234806663975204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09c0eda349fda549b306c26f33eb20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: {fileID: 0}
+  incomeRuneChecker: {fileID: 0}
+  avaiableRunes: []
+  startShields: 0
+  runesNumber: 1
 --- !u!4 &6115443383261874503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 240f65eeb7b51d248b836ae86d9ec5e4, type: 3}
