@@ -48,6 +48,7 @@ public class ColorVisualizer : MonoBehaviour
             foreach(RuneData data in checker.vulnerableRunes)
             {
                 runeColors[i].rune = data;
+                i++;
             }
         }
 
