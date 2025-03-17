@@ -724,6 +724,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &489964346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 489964348}
+  - component: {fileID: 489964347}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &489964347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489964346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef47c5fdd33ad24384b445e157a3e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTransition: {fileID: 0}
+--- !u!4 &489964348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489964346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.301449, y: 1.7385509, z: -66.49726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &923742411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2742,6 +2787,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 489964347}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Change
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Defeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496205887719494163, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
+      propertyPath: AttachablkeEvents.Array.data[0].EvokeAction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1677775274929075868, guid: eee029fafb0ae514ca3476cac7faee49, type: 3}
       propertyPath: m_Name
       value: MainPlayer
@@ -2774,3 +2851,4 @@ SceneRoots:
   - {fileID: 166965187}
   - {fileID: 1390386908}
   - {fileID: 923742411}
+  - {fileID: 489964348}
